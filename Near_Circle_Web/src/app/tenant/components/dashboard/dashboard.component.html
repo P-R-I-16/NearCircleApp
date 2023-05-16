@@ -1,0 +1,111 @@
+<ng-container *ngIf="show">
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+    <div class="dashboard-filter">
+        <div class="filter-grid" [formGroup]="validateForm">
+            <div class="filter-select-dropdown filter-fields-width">
+
+                <nz-form-item>
+                    <nz-form-label nzFor="nationality">Nationality</nz-form-label>
+                    <nz-form-control nzErrorTip="This Field Is Required">
+                        <nz-input-group>
+                            <input class="firstFilterInput" formControlName="nationality" nz-input
+                                placeholder="Nationality" type="text" />
+                                
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-label nzFor="interests">Interests</nz-form-label>
+                    <nz-form-control nzErrorTip="This Input Is Required!">
+                        <input class="firstFilterInput" type="text" nz-input placeholder="Interests"
+                            formControlName="interests" />
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-label nzFor="age">Age</nz-form-label>
+                    <nz-form-control nzErrorTip="This Input Is Required!">
+                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select an Age" formControlName="age">
+                            <nz-option *ngFor="let age of AGE" nzLabel={{age}} nzValue={{age}}></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="This Input Is Required!">
+                        <button class="filterBtn" nz-button nzType="primary" (click)="searchTenant()">Search
+                            Tenant</button>
+                    </nz-form-control>
+                </nz-form-item>
+
+            </div>
+
+         <!-- <div class="filter-select-dropdown filter-fields-width">
+                <button class="filterBtn" nz-button nzType="primary" style="width: 300px;"
+                    routerLink="/tenant/tenants">View Tenants in Our
+                    Apartment</button>
+            </div>-->
+        </div>
+
+    </div>
+</nz-spin>
+
+
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..." *ngIf="TENANTS">
+    <nz-table #basicTable [nzData]="TENANTS" [nzPageSize]="20" [nzShowPagination]="'false'">
+        <thead>
+            <tr>
+                <th style="font-weight: bolder; color: #003973;">Apartment</th>
+                <th style="font-weight: bolder; color: #003973;">Name</th>
+               <!-- <th style="font-weight: bolder; color: #003973;">Address</th>-->
+                <th style="font-weight: bolder; color: #003973;">Age</th>
+                <th style="font-weight: bolder; color: #003973;">Bio</th>
+              <!--  <th style="font-weight: bolder; color: #003973;">Ethnicity</th>
+                <th style="font-weight: bolder; color: #003973;">Race</th>-->
+                <th style="font-weight: bolder; color: #003973;">Nationality</th>
+                <th style="font-weight: bolder; color: #003973;">Interests</th>
+                <th style="font-weight: bolder; color: #003973;">Member Since</th>
+                <th style="font-weight: bolder; color: #003973;">Action</th>
+                <th style="font-weight: bolder; color: #003973;">Profile</th>
+                <th style="font-weight: bolder; color: #003973;">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tenant of basicTable.data">
+                <td>{{tenant.apartmentName}}</td>
+                <td>{{tenant.firstname}} <span>{{tenant.lastname}}</span></td>
+               <!--<td>{{tenant.address}}</td>-->
+                <td>{{tenant.age}}</td>
+                <td>{{tenant.bio}}</td>
+                <!--<td>{{tenant.ethnicity}}</td>
+                <td>{{tenant.race}}</td>-->
+                <td>{{tenant.nationality}}</td>
+                <td>{{tenant.interests}}</td>
+                <td>{{tenant.date | date: 'dd/MM/yyyy'}}</td>
+              
+
+                <td><label class="filterBtn"  style=" color: #f4f7f9; width: 70px;" nz-radio-button nzValue="small" *ngIf="tenant.userId != userId"
+                        (click)="addTenantToFriendList(tenant.id,tenant.userId)">Friend</label>
+                </td>
+                <td><label class="filterBtn"  style=" color: #f4f7f9; width: 100px;" nz-radio-button nzValue="small" *ngIf="tenant.userId != userId"
+                    >VisitProfile</label>
+            </td>
+            <td><label  class="filterBtn"  style=" color: #f4f7f9; width: 120px;" nz-radio-button nzValue="small" *ngIf="tenant.userId != userId"
+                >SendMessage</label>
+        </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-spin>
+</ng-container>
+<ng-container *ngIf="hideProfStatus">
+<nz-result
+nzStatus="success"
+nzTitle="Your Profile verification request has been submitted to your Manager"
+nzSubTitle="Status of your request is in {{TenantStatus}}.
+Once Approved You will have access to all the app features"
+>
+
+</nz-result>
+</ng-container>

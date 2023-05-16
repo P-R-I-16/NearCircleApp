@@ -1,0 +1,121 @@
+<div style=" margin-top: 180px;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2 style="margin-left: 230px;">Post Apartment</h2>
+                </div>
+
+                <form name="postApt" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                    <div nz-row>
+
+                       
+
+                        <!-- <input type="file" id="customFile" (change)="selectFile($event)"> -->
+                        <!-- <button class="btn btn-primary" [disabled]="!selectedFiles"
+                            (click)="upload()">Save File</button> -->
+                        <!-- <button class="btn btn-primary" style="margin-left: 10px" (click)="downloadFile()">View
+                            File</button> -->
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                        <input nz-input type="text" placeholder="ManagerName" formControlName="managerName" />
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+    
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="ApartmentName" formControlName="name" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input type="text" placeholder="ApartmentAddress" formControlName="address" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                  
+                                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select City"
+                                        formControlName="city">
+                                        <nz-option nzValue="Fullerton" nzLabel="Fullerton"></nz-option>
+                                        <nz-option nzValue="Placentia" nzLabel="Placentia"></nz-option>
+                                        
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    
+                                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select State"
+                                        formControlName="state">
+                                        <nz-option nzValue="CA" nzLabel="California"></nz-option>
+                                        
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                   
+                                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select Country"
+                                        formControlName="country">
+                                        <nz-option nzValue="US" nzLabel="United States"></nz-option>
+                                        
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="5" [nzSpan]="7" nzRequired>Work Phone No</nz-form-label>
+                                <nz-form-control [nzSpan]="12"  nzErrorTip="This Input Is Invalid!">
+                                  <input nz-input type="text" formControlName="mobile" placeholder="mobile" />
+                                 
+                                </nz-form-control>
+                              </nz-form-item>
+</div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="customFile" nzRequired>WorkId Proof </nz-form-label>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input type="file" id="customFile" formControlName="img" (change)="selectFile($event)"> </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                        <nz-form-control  [nzSpan]="14" [nzOffset]="6">
+                            <label nz-checkbox formControlName="agree">
+                              <span>
+                                I have read the
+                                <a href="https://www.freeprivacypolicy.com/live/1e89f0c2-3986-4c3e-b570-18eb7de93309">agreement</a>
+                              </span>
+                            </label>
+                      
+                          </nz-form-control>
+                          </div>
+                    </div>
+
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>

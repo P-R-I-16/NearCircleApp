@@ -1,0 +1,35 @@
+<div style="background-color: #F8F8F8; min-height: 91vh;" *ngIf="TENANTS">
+
+    <div style="padding-top: 10px;"></div>
+
+    <div style="margin-top:10px;" class="child" *ngFor="let tenant of TENANTS">
+        <div nz-row>
+            <div nz-col nzSpan="24">
+                <div style="flex-direction: column;">
+                    <h2 style="cursor: pointer; color: #108ee9;">
+                        {{tenant.firstname}} <span>{{tenant.lastname}}</span></h2>
+                </div>
+                <p>Address : <b>{{tenant.address}}</b></p>
+                <hr>
+                <h5>Status : <b>{{tenant.status}}</b> - Posted :
+                    <b>{{calculateDate(tenant.date)}}</b> - Username :
+                    <b>{{tenant.username}}</b> - Apartment Name :
+                    <b>{{tenant.apartmentName}}</b>- Mobile No :
+                    <b>{{tenant.mobile}}</b>- Nationality :
+                    <b>{{tenant.nationality}}</b>
+                </h5>
+                <hr>
+                <div style="float: right;">
+                    <button nzSize="small" nz-button nzType="primary"
+                        (click)="approveTenant(tenant.id)">Approve</button>
+                        <br> <br>
+                        <button nzBlock="true" nzSize="small" nz-button nzType="primary"
+                        (click)="approveTenant(tenant.id)">Reject</button>
+                        
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

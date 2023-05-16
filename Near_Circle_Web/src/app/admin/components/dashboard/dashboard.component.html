@@ -1,0 +1,34 @@
+<div style="background-color: #F8F8F8; min-height: 91vh;" *ngIf="APARTMENTS">
+
+    <div style="padding-top: 10px;"></div>
+
+    <div style="margin-top:10px;" class="child" *ngFor="let Apartment of APARTMENTS">
+        <div nz-row>
+            <div nz-col nzSpan="24">
+                <h2 style="cursor: pointer; color: #108ee9;">
+                    {{Apartment.name}}</h2>
+                <h1>{{Apartment.file}}</h1>
+                <button nzSize="small" nz-button nzType="primary"><a
+                        href="http://localhost:8080/api/near-circle/admin/file/{{Apartment.id}}">Download
+                        File</a></button>
+                <hr>
+                <h5>Address : <b>{{Apartment.address}} {{Apartment.city}} {{Apartment.state}}</b> - Status : <b>{{Apartment.status}}</b> - Posted :
+                    <b>{{calculateDate(Apartment.date)}}</b> - Manager Name :
+                    <b>{{Apartment.managerName}}</b>- Contact No :
+                    <b>{{Apartment.phoneNo}}</b>
+                </h5>
+                <hr>
+                <div style="float: right;">
+                    <button  nzBlock="true" nzSize="small" nz-button nzType="primary"
+                        (click)="approveApartment(Apartment.id)">Approve</button>
+                        <br> <br>
+                        <button nzBlock="true" nzSize="small" nz-button nzType="primary"
+                        (click)="rejectApartment(Apartment.id)">Reject</button>
+                        
+                </div>
+           
+            </div>
+
+        </div>
+    </div>
+</div>

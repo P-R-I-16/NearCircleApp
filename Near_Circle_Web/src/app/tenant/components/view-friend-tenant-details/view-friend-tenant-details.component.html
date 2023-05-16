@@ -1,0 +1,25 @@
+<div style="background-color: #F8F8F8; min-height: 91vh;" *ngIf="FRIEND">
+
+    <div style="padding-top: 10px;"></div>
+
+    <div style="margin-top:10px;" class="child">
+        <div nz-row>
+            <div nz-col nzSpan="24">
+                <h2 style="cursor: pointer; color: #108ee9;">
+                    {{FRIEND.firstname}} <span>{{FRIEND.lastname}}</span></h2>
+                <h5>Apartment : <b>{{FRIEND.apartmentName}}</b></h5>
+                <h5></h5>
+                <h5></h5>
+                <hr>
+                <h5> Address : <b>{{FRIEND.address}}</b>
+                    - Ethnicity :<b>{{FRIEND.ethnicity}}</b>
+                    - Interests : <b>{{FRIEND.interests}}</b> - Nationality : <b>{{FRIEND.nationality}}</b>
+                    - Bio : <b>{{FRIEND.bio}}</b>
+                    - Posted : <b>{{calculateDate(FRIEND.date)}}</b>
+                </h5>
+                <hr>
+            </div>
+
+        </div>
+    </div>
+</div>

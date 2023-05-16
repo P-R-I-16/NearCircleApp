@@ -1,0 +1,188 @@
+<div style=" margin-top: 120px;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2 style="margin-left: 200px;">Start Your NearCircle Profile</h2>
+                </div>
+                
+
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                    <div nz-row>
+
+                     
+                      
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                  <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!"> 
+                                <nz-upload
+                                class="avatar-uploader"
+                               
+                               
+                                nzName="avatar"
+                                nzListType="picture-card"
+                                [nzShowUploadList]="false"
+                                [nzBeforeUpload]="beforeUpload"
+                                (nzChange)="handleChange($event)"
+                              >
+                                <ng-container *ngIf="!avatarUrl">
+                                  <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
+                                  <div class="ant-upload-text">Upload Profile Pic</div>
+                                </ng-container>
+                                <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+                              </nz-upload>
+                         
+                            
+                        </nz-form-control>
+
+                            </nz-form-item>
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select an Apartment"
+                                        formControlName="apartmentId">
+                                        <nz-option *ngFor="let apartment of APARTMENTS" nzLabel={{apartment.name}}
+                                            nzValue={{apartment.id}}></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="First Name" formControlName="firstname" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="Last Name" formControlName="lastname"/>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="Apt No (Optional)" formControlName="address" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                              
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Invalid!">
+                                  <input nz-input type="text" formControlName="mobile" placeholder="Mobile" />
+                                 
+                                </nz-form-control>
+                              </nz-form-item>
+                              </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select an Age"
+                                        formControlName="age">
+                                        <nz-option *ngFor="let age of AGE" nzLabel={{age}} nzValue={{age}}></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <textarea rows="1" nz-input placeholder="Bio" formControlName="bio" ></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control  nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                  
+                                    <nz-select formControlName ="interests"
+      [nzMaxTagCount]="3"
+      [nzMaxTagPlaceholder]="tagPlaceHolder"
+      nzMode="multiple"
+      nzPlaceHolder="Select Interests"
+      
+    >
+      
+      <nz-option nzLabel="Arts" nzValue="Arts">Arts</nz-option>
+      <nz-option nzLabel="Music" nzValue="Music">Music</nz-option>
+      <nz-option nzLabel="Sports" nzValue="Sports">Sports</nz-option>
+      <nz-option nzLabel="Travel" nzValue="Travel">Travel</nz-option>
+      <nz-option nzLabel="Science" nzValue="Science">Science</nz-option>
+      <nz-option nzLabel="Drama" nzValue="Drama">Drama</nz-option>
+      <nz-option nzLabel="Technology" nzValue="Technology">Technology</nz-option>
+    </nz-select>
+    <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        
+
+                    <!--  <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="Race" formControlName="race" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="Ethnicity" formControlName="ethnicity" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>-->
+
+                       <!-- <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="Nationality" formControlName="nationality" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>-->
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select Nationality"
+                                formControlName="nationality">
+
+                                <nz-option nzValue="afghan" nzLabel="afghan">Afghan</nz-option>
+                                <nz-option nzValue="albanian"  nzLabel="albanian">Albanian</nz-option>
+                                <nz-option nzValue="algerian" nzLabel="algerian">Algerian</nz-option>
+                                <nz-option nzValue="american" nzLabel="american">American</nz-option>
+                                <nz-option nzValue="andorran" nzLabel="andorran">Andorran</nz-option>
+                                <nz-option nzValue="angolan"  nzLabel="angolan">Angolan</nz-option>
+                                <nz-option nzValue="antiguans" nzLabel="antiguans">Antiguans</nz-option>
+                                <nz-option nzValue="argentinean"  nzLabel="argentinean">Argentinean</nz-option>
+                                <nz-option nzValue="armenian"  nzLabel="armenian">Armenian</nz-option>
+                                <nz-option nzValue="australian"  nzLabel="australian">Australian</nz-option>
+                                <nz-option nzValue="austrian"  nzLabel="austrian">Austrian</nz-option>
+                                 <nz-option nzValue="chinese" nzLabel="chinese">Chinese</nz-option>
+                                 <nz-option nzValue="indian" nzLabel="indian">Indian</nz-option>
+                                <nz-option nzValue="indonesian" nzLabel="indonesian">Indonesian</nz-option>
+                                <nz-option nzValue="iranian" nzLabel="iranian">Iranian</nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                            </nz-form-item>
+                      
+                        </div>
+
+                    </div>
+
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Create or Update Your Profile</button>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+
+   
+</div>

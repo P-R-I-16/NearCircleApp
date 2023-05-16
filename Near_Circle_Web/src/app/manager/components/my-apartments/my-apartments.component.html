@@ -1,0 +1,13 @@
+<div style="background: #ECECEC;padding:30px;" *ngIf="APARTMENTS">
+    <div nz-row [nzGutter]="6">
+        <div nz-col [nzSpan]="6" *ngFor="let Apartments of APARTMENTS" style="padding: 3px;">
+            <nz-card nzTitle="{{Apartments.name}}">
+                <!-- <p><strong>Work Id : </strong>{{Apartments.workId}}</p> -->
+                <p><strong>Address : </strong>{{Apartments.address}}</p>
+                <p><strong>City : </strong>{{Apartments.city}}</p>
+                <p><strong>Status : </strong>{{Apartments.status}}</p>
+                <p><strong>Posted : </strong>{{calculateDate(Apartments.date)}}</p>
+            </nz-card>
+        </div>
+    </div>
+</div>

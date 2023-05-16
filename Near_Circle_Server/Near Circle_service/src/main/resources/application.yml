@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: nearcircle-service
+
+eureka:
+  instance:
+    hostname: localhost

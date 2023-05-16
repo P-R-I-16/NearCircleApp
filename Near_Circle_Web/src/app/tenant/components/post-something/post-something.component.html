@@ -1,0 +1,103 @@
+<nz-layout>
+   
+    <div nz-row style="margin-top: 40px;">
+        <nz-sider>
+    <div nz-col [nzSpan]="6" >
+        <nz-card style="width:300px; margin-top: 30px;" [nzCover]="coverTemplate" nzHoverable style="width:240px">
+             
+           
+            <span  style="margin-left: 1px;" nz-icon nzType="edit" nzTheme="outline" routerLink="/tenant/tenant" routerLinkActive="active"></span>
+            <!-- <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" routerLink="/tenant/tenant" routerLinkActive="active">Edit</button>-->
+            <h1><strong>{{USER.name}}</strong></h1>
+            <h3>Friends: <strong>{{USER.countFriends}}</strong></h3>
+            <h3>Bio:<strong>{{TENANTINFO.bio}}</strong></h3>
+            <h3>Apt:<strong>{{TENANTINFO.apartmentName}}</strong></h3>
+          
+
+            
+        </nz-card>
+        <ng-template #coverTemplate>
+            <img alt="example" src="data:image/png;base64,{{imgSrc}}" />
+          </ng-template>
+      
+          
+    </div>
+</nz-sider>
+
+    <nz-content>
+
+<div nz-row>
+   <!-- <div nz-col [nzSpan]="6" [nzPull]="16">
+        <nz-card style="width:300px; margin-top: 30px;">
+            <h1><strong>{{USER.name}}</strong></h1>
+            <h5>Friends: <strong>{{USER.countFriends}}</strong></h5>
+        </nz-card>
+    </div>-->
+   
+   
+    <div nz-col [nzSpan]="6" [nzPush]="4">
+        
+        <div style="margin-top: 20px;width: 400px;">
+  <nz-card style="width:750px; margin-top: 30px;">
+            <div nz-row [nzGutter]="24">
+                <h2 style="margin-left: 30px;align-self: center;"> Start Posting to your NearCircle</h2>
+            </div>
+
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" style="margin-left: 10px;">
+                <div nz-row>
+
+                    <div nz-col nzSpan="25">
+                        <nz-form-item>
+                            <nz-form-control nzHasFeedback [nzXs]="50" nzErrorTip="This Input Is Required!">
+                                <textarea rows="5" style="width: 1000px;" nz-input placeholder="Enter something to post"
+                                    formControlName="text"></textarea> </nz-form-control>
+                        </nz-form-item>
+                        
+                            
+                        
+                    </div>
+                  
+
+                </div>
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Post</button>
+                
+
+            </form>
+        </nz-card>
+        </div>
+    </div>
+    
+</div>
+
+<ng-container *ngIf="noPosts">
+    <div nz-col [nzSpan]="11" [nzPush]="4" >
+        <nz-card style="width:750px; margin-top: 30px;">
+        <h2 style="margin-left: 70px;align-self: center;"> You don't have any Posts yet</h2>
+    </nz-card>
+    </div>
+    </ng-container>
+<ng-container *ngIf="!noPosts">
+<div nz-col [nzSpan]="11" [nzPush]="4" >
+    <div style="background: #ECECEC;padding:30px; margin-top: 29px; width:750px " *ngIf="POSTS">
+        <div nz-row [nzGutter]="24">
+            <div nz-col [nzSpan]="24" *ngFor="let post of POSTS">
+                <nz-card style="width:650px; margin-top: 30px; overflow: auto;" nzTitle="{{post.tenantFirstName}} ">
+                    <p>{{post.text}}</p>
+                     <span nz-icon nzType="like" nzTheme="outline" style="float:inline-start;display: inline;"></span> <span nz-icon nzType="comment" nzTheme="outline" style="float:inline-end;display: inline;margin-inline-start: 10px;"></span>
+
+                  
+                   
+                    <!--<span nz-icon nzType="share-alt" nzTheme="outline" style="float: right;display: inline;"></span>-->
+                    <span nz-icon nzType="delete" nzTheme="outline" style="float: right;display: inline;">Posted On :{{post.date| date: 'dd/MM/yyyy'}}  </span>
+                </nz-card>
+           
+        </div>
+    </div>
+    <br>
+    <div>
+    <nz-pagination [nzPageIndex]="1" [nzTotal]="10" nzPageSizeChange="2"></nz-pagination> 
+        </div>
+    </div>
+</div>
+</ng-container>
+</nz-content>

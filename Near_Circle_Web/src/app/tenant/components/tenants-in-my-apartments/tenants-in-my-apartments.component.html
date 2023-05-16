@@ -1,0 +1,35 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..." *ngIf="TENANTS">
+    <nz-table #basicTable [nzData]="TENANTS" [nzPageSize]="20" [nzShowPagination]="'false'">
+        <thead>
+            <tr>
+                <th style="font-weight: bolder; color: #003973;">Apartment</th>
+                <th style="font-weight: bolder; color: #003973;">Name</th>
+                <th style="font-weight: bolder; color: #003973;">Address</th>
+                <th style="font-weight: bolder; color: #003973;">Age</th>
+                <th style="font-weight: bolder; color: #003973;">Bio</th>
+                <th style="font-weight: bolder; color: #003973;">Ethnicity</th>
+                <th style="font-weight: bolder; color: #003973;">Race</th>
+                <th style="font-weight: bolder; color: #003973;">Nationality</th>
+                <th style="font-weight: bolder; color: #003973;">Interests</th>
+                <th style="font-weight: bolder; color: #003973;">Member Since</th>
+                <th style="font-weight: bolder; color: #003973;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tenant of basicTable.data">
+                <td>{{tenant.apartmentName}}</td>
+                <td>{{tenant.firstname}} <span>{{tenant.lastname}}</span></td>
+                <td>{{tenant.address}}</td>
+                <td>{{tenant.age}}</td>
+                <td>{{tenant.bio}}</td>
+                <td>{{tenant.ethnicity}}</td>
+                <td>{{tenant.race}}</td>
+                <td>{{tenant.nationality}}</td>
+                <td>{{tenant.interests}}</td>
+                <td>{{tenant.date | date: 'dd/MM/yyyy'}}</td>
+                <td><label nz-radio-button nzValue="small" (click)="addTenantToFriendList(tenant.id)">Friend</label>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-spin>

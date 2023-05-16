@@ -1,0 +1,158 @@
+<div *ngIf="!isManagerLoggedIn && !isAdminLoggedIn && !isTenantLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003973;">
+        <div>
+            <a style="color: white; margin-left:50px; font-size: 18px;font-weight: bolder;" routerLink="/login">Near
+                Circle</a>
+        </div>
+        <div class="nav-links">
+            <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Sign Up</a>
+            <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+        </div>
+    </nz-header>
+
+    <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
+        <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Sign Up</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+            </li>
+
+        </ul>
+    </nz-sider>
+</div>
+<div *ngIf="isTenantLoggedIn && isVerifiedTenantLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003973;">
+        <div>
+            <a style="color: white; margin-left:50px; font-size: 18px;font-weight: bolder;"
+                routerLink="/tenant/dashboard">Near Circle</a>
+
+        </div>
+        <div class="nav-links">
+            <a nz-button nzType="link" routerLink="/tenant/dashboard" routerLinkActive="active">Dashboard</a>
+            <a nz-button nzType="link" routerLink="/tenant/tenant" routerLinkActive="active">Profile</a>
+            <a nz-button nzType="link" routerLink="/tenant/friends" routerLinkActive="active">Friends</a>
+            <a nz-button nzType="link" routerLink="/tenant/post" routerLinkActive="active">Post</a>
+            <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+            <nz-avatar nzIcon="user" nzSrc="C://Users//Priyansha//Pictures//Capture1.PNG"></nz-avatar>
+        </div>
+    </nz-header>
+
+    <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
+        <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
+            <!-- <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/my-orders" routerLinkActive="active">My Orders</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/profile" routerLinkActive="active">My Profile</a>
+            </li>
+
+            <li nz-menu-item>
+                <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+            </li> -->
+        </ul>
+    </nz-sider>
+</div>
+
+
+<div *ngIf="isTenantLoggedIn && !isVerifiedTenantLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003973;">
+        <div>
+            <a style="color: white; margin-left:50px; font-size: 18px;font-weight: bolder;"
+                routerLink="/tenant/dashboard">Near Circle</a>
+
+        </div>
+        <div class="nav-links">
+           
+            <a nz-button nzType="link" routerLink="/tenant/tenant" routerLinkActive="active">Profile</a>
+            <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+            <nz-avatar nzIcon="user" nzSrc="C://Users//Priyansha//Pictures//Capture1.PNG"></nz-avatar>
+        </div>
+    </nz-header>
+
+    <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
+        <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
+            <!-- <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/my-orders" routerLinkActive="active">My Orders</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/profile" routerLinkActive="active">My Profile</a>
+            </li>
+
+            <li nz-menu-item>
+                <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+            </li> -->
+        </ul>
+    </nz-sider>
+</div>
+<div *ngIf="isAdminLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003973;">
+        <div>
+            <a style="color: white; margin-left:50px; font-size: 18px;font-weight: bolder;"
+                routerLink="/admin/dashboard">Near Circle</a>
+        </div>
+        <div class="nav-links">
+            <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+            <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+
+        </div>
+    </nz-header>
+
+    <!-- <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
+        <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/admin/category" routerLinkActive="active">Category</a>
+            </li>
+
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/admin/product" routerLinkActive="active">Product</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+            </li>
+        </ul>
+    </nz-sider> -->
+</div>
+
+<div *ngIf="isManagerLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003973;">
+        <div>
+            <a style="color: white; margin-left:50px; font-size: 18px;font-weight: bolder;"
+                routerLink="/manager/dashboard">Near Circle</a>
+        </div>
+        <div class="nav-links">
+            <a nz-button nzType="link" routerLink="/manager/dashboard" routerLinkActive="active">Dashboard</a>
+            <a nz-button nzType="link" routerLink="/manager/apartments" routerLinkActive="active">My Apartments</a>
+            <a nz-button nzType="link" routerLink="/manager/apartment" routerLinkActive="active">Post Apartment</a>
+            <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+        </div>
+    </nz-header>
+
+    <!-- <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
+        <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/admin/category" routerLinkActive="active">Category</a>
+            </li>
+
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/admin/product" routerLinkActive="active">Product</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+            </li>
+        </ul>
+    </nz-sider> -->
+</div>
