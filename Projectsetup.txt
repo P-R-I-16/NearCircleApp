@@ -1,0 +1,37 @@
+angular cli
+node js
+mysql
+intellij
+vs code
+jdk 11
+open nearcircle web in vscode and go to terminal type npm install
+run ng serve to run frontend
+
+open nearcircle service in intellij
+
+intellij community
+admin@gmail.com
+admin
+
+
+
+manager@test.com
+manager
+
+tenantOne@test.com
+tenantOne
+
+
+Signup
+310JeffersonApt@gmail.com
+123456
+Jenny
+
+https://www.youtube.com/watch?v=ESOwacc-hJg
+
+https://www.youtube.com/watch?v=k5E2AVpwsko
+
+
+https://github.com/cracktechnicalinterview/facebook-clone-backend
+
+https://www.youtube.com/watch?v=1RHDhtbqo94
