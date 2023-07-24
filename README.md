@@ -46,6 +46,3 @@ To install the software system, follow these steps:
  # Operating Instructions 
 After the installation is done successfully, application client, eureka server and spring boot microservices are up then open the below application URL in the browser and the app’s login page should be displayed.
 App URL- http://localhost:4200/login
-Use Admin credentials to verify login is working fine.
-Username-admin@gmail.com
-Password-admin
